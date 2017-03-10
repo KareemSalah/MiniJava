@@ -7,10 +7,17 @@ public class RegExp {
 	public String type;
 	public String regExp;
 
+
 	
 	public int startIndex;
 	public int endIndex;
-	public RegExp(){}
+	
+	
+	public RegExp() {
+		super();
+	}
+	
+
 	public RegExp(String type, String regExp) {
 		super();
 		this.type = type;
@@ -21,11 +28,25 @@ public class RegExp {
 		super();
 		this.type = type;
 		this.regExp = regExp;
-		this.startIndex = startIndex; }
-
+		this.startIndex = startIndex;
+	}
 	
+	public String getType() {
+		return type;
+	}
 
-	
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getRegExp() {
+		return regExp;
+	}
+
+	public void setRegExp(String regExp) {
+		this.regExp = regExp;
+	}
+
 
 	public ArrayList<RegExp> fill() {
 
@@ -35,6 +56,7 @@ public class RegExp {
 		regExps.add(new RegExp("COMMENT1", "\\b\\/\\/\\b"));
 		regExps.add(new RegExp("COMMENT2", "(\\/\\*).*(\\*\\/)"));
 		regExps.add(new RegExp("COMMENT_L", "\\b\\/\\*\\b"));
+
 		regExps.add(new RegExp("COMMENT_R", "\\b\\*\\/\\b"));
 
 		
@@ -45,15 +67,13 @@ public class RegExp {
 		regExps.add(new RegExp("FLOAT_LITERAL", "[-]?\\d+\\.\\d+"));
 		regExps.add(new RegExp("INTEGRAL_LITERAL", "\\d+"));
 		regExps.add(new RegExp("SYSTEM.OUT.PRINTLN", "\\bsystem\\.out\\.println\\b"));
-
 		
+
 		regExps.add(new RegExp("INT", "\\bint\\b"));
 		regExps.add(new RegExp("CHARACTER", "\\bchar\\b"));
 		regExps.add(new RegExp("STRING", "\\b(^String| String)\\b"));
 		regExps.add(new RegExp("BOOLEAN", "\\b(\\s|\\n)boolean\\s\\b"));
-		regExps.add(new RegExp("FLOAT", "\\bfloat\\b"));
-		
-		
+		regExps.add(new RegExp("FLOAT", "\\bfloat\\b"));		
 		regExps.add(new RegExp("CLASS", "\\b( class |^class)\\b"));
 		regExps.add(new RegExp("VOID", "\\bvoid\\b"));
 		regExps.add(new RegExp("PUBLIC", "\\public\\b"));
@@ -95,10 +115,12 @@ public class RegExp {
 		regExps.add(new RegExp("DQUOTE", "\""));
 
 		
+
 		regExps.add(new RegExp("MAIN","\bmain\b"));
 		regExps.add(new RegExp("ID", "\\b_?[a-zA-Z_]+\\w*\\b"));
-		return regExps;
 
+		return regExps;
 	}
 
+	
 }
