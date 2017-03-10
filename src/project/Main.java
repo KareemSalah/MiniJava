@@ -1,5 +1,8 @@
 package project;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,13 +14,30 @@ public class Main {
 	final public static Integer priority1 = 5;
 	
 	@SuppressWarnings("finally")
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		RegExp regExp = new RegExp();
 		regExps = regExp.fill();
 		
 		// Should replace this line and get code from file and store in stringBuilder
-		StringBuilder input = new StringBuilder("tst");
+		StringBuilder input = new StringBuilder();
+		
+		
+		
+		BufferedReader br = new BufferedReader(new FileReader("a.txt"));
+	    try {
+	        
+	        String line = br.readLine();
+	        while (line != null) {
+	        	input.append(line);
+	        	input.append("\n");
+	            line = br.readLine();
+	        }
+	    } finally {
+	        br.close();
+	    }
+		
+		
 		
 		// tokenizing the code
 		ArrayList<Token> tokens = new ArrayList<>();
@@ -44,9 +64,9 @@ public class Main {
 			
 			// starting a string literal
 			if(input.charAt(i) == '"') {
-				for(int j = + 1;j < input.length();j++) {
-					if(input.charAt(j) == '*') {
-						Token token = new Token(i, regExps.get(2).getType(), input.substring(i, j+1));
+				for(int j = i + 1;j < input.length();j++) {
+					if(input.charAt(j) == '"') {
+						Token token = new Token(i, regExps.get(1).getType(), input.substring(i, j+1));
 						tokens.add(token);
 						for(int k = i;k <= j;k++) {
 							input.setCharAt(k, terminator);
@@ -87,7 +107,7 @@ public class Main {
 				tokens.add(token);
 				
 				// substituting the found token in code with a terminator character
-				while(start <= end) {
+				while(start < end) {
 					input.setCharAt(start, terminator);
 					start += 1;
 				}
@@ -105,7 +125,7 @@ public class Main {
 			tokens.add(token);
 			
 			// substituting the found token in code with a terminator character
-			while(start <= end) {
+			while(start < end) {
 				input.setCharAt(start, terminator);
 				start += 1;
 			}
