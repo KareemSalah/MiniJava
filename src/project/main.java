@@ -1,6 +1,6 @@
 package project;
 
-<<<<<<< HEAD
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,32 +27,5 @@ public class main {
 		regExps = regExp.fill();
 		
 		
-=======
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class main {
-	public static ArrayList<RegExp> regExps = new ArrayList<>();
-
-	public static void main(String[] args) {
-
-		RegExp regExp = new RegExp();
-		regExps = regExp.fill();
-
-		String input = "int intval = 10*5";
-		tokenize(input);
-
-	}
-
-	public static void tokenize(String input) {
->>>>>>> e5be714b1e04ffcebb77a9f01375acec3d20cd32
-		
-
-	}
-
-<<<<<<< HEAD
-	
-=======
->>>>>>> e5be714b1e04ffcebb77a9f01375acec3d20cd32
+}
 }
