@@ -60,8 +60,8 @@ public class RegExp {
 		regExps.add(new RegExp("COMMENT_R", "\\b\\*\\/\\b"));
 
 		
-		regExps.add(new RegExp("STRING_LITERAL", "\"[^\"\\\\]*(\\\\.[^\"\\\\]*)*\""));
-		regExps.add(new RegExp("CHAR", "\'.\'"));
+		regExps.add(new RegExp("STRING_LITERAL", "\"(.)*\"")); // msh fhma da \"[^\"\\\\]*(\\\\.[^\"\\\\]*)*\"
+		regExps.add(new RegExp("A_CHAR", "\'.\'"));
 
 		
 		regExps.add(new RegExp("FLOAT_LITERAL", "[-]?\\d+\\.\\d+"));
@@ -71,12 +71,12 @@ public class RegExp {
 
 		regExps.add(new RegExp("INT", "\\bint\\b"));
 		regExps.add(new RegExp("CHARACTER", "\\bchar\\b"));
-		regExps.add(new RegExp("STRING", "\\b(^String| String)\\b"));
+		regExps.add(new RegExp("STRING", "(^String|(?<= )String)(?=\\s*\\w(\\w)*(\\s)*(=|;))")); // lessa b7awl azbtha m3 d |(?<=(\\s*)String (?=\\s*..*))) ,, yla2e String fl awl aw b3d space *3shan l access modifiers* w b3deen lazm shwyt kalam w lazm fl a5r ; aw = 
 		regExps.add(new RegExp("BOOLEAN", "\\b(\\s|\\n)boolean\\s\\b"));
 		regExps.add(new RegExp("FLOAT", "\\bfloat\\b"));		
 		regExps.add(new RegExp("CLASS", "\\b( class |^class)\\b"));
 		regExps.add(new RegExp("VOID", "\\bvoid\\b"));
-		regExps.add(new RegExp("PUBLIC", "\\public\\b"));
+		regExps.add(new RegExp("PUBLIC", "\\bpublic\\b"));
 		regExps.add(new RegExp("STATIC", "\\bstatic\\b"));
 		regExps.add(new RegExp("NEW", "\\bnew\\b"));
 		regExps.add(new RegExp("EXTENDS", "\\bextends\\b"));
@@ -111,12 +111,12 @@ public class RegExp {
 		regExps.add(new RegExp("AND", "&&"));
 		regExps.add(new RegExp("LESSTHAN", "<"));
 		regExps.add(new RegExp("GREATERTHAN", ">"));
-		regExps.add(new RegExp("SQUOTE", "‘"));
+		regExps.add(new RegExp("SQUOTE", "'"));
 		regExps.add(new RegExp("DQUOTE", "\""));
 
 		
 
-		regExps.add(new RegExp("MAIN","\bmain\b"));
+		regExps.add(new RegExp("MAIN","(?<=public static void )main(?=\\s*\\(String\\s\\[\\] args\\))"));
 		regExps.add(new RegExp("ID", "\\b_?[a-zA-Z_]+\\w*\\b"));
 
 		return regExps;
