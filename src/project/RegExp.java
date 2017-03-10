@@ -41,7 +41,7 @@ public class RegExp {
 		regExps.add(new RegExp("GREATERTHAN", ">"));
 		regExps.add(new RegExp("IF", "if"));
 		regExps.add(new RegExp("INT", "int"));
-		regExps.add(new RegExp("ELSE", "(?<=\\s|\\n)else(?=\\s|\\n)"));
+		regExps.add(new RegExp("ELSE", "(?<=\\s|\\n|\\})else(?=\\s|\\n|\\{)"));
 		regExps.add(new RegExp("MAIN", "(^public static void main(String[] args))")); // TO be edited ,, msh moktn3a tb3n :/
 		regExps.add(new RegExp("THIS", "this"));
 		regExps.add(new RegExp("TRUE", "true"));
