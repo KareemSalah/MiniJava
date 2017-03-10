@@ -1,4 +1,4 @@
-package project;
+package MiniJava;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
