@@ -16,7 +16,7 @@ public class RegExp {
 	public RegExp() {
 
 	}
-
+	
 	public ArrayList<RegExp> fill() {
 
 		ArrayList<RegExp> regExps = new ArrayList<>();
@@ -41,7 +41,7 @@ public class RegExp {
 		regExps.add(new RegExp(">", ">"));
 		regExps.add(new RegExp("IF", "if"));
 		regExps.add(new RegExp("INT", "int"));
-		regExps.add(new RegExp("ELSE", "(\\s|\\n)else(\\s|\\n)"));
+		regExps.add(new RegExp("ELSE", "(?<=\\s|\\n)else(?=\\s|\\n)"));
 		regExps.add(new RegExp("MAIN", "main"));
 		regExps.add(new RegExp("THIS", "this"));
 		regExps.add(new RegExp("TRUE", "true"));
@@ -63,7 +63,7 @@ public class RegExp {
 		regExps.add(new RegExp("INTEGRAL_LITERAL", "\\d+"));
 		regExps.add(new RegExp("FLOAT_LITERAL", "[-]?\\d+\\.\\d+"));
 		regExps.add(new RegExp("STRING_LITERAL", "\"[^\"\\\\]*(\\\\.[^\"\\\\]*)*\""));
-		regExps.add(new RegExp("ID", "_?[a-zA-Z_]+\w*"));
+		regExps.add(new RegExp("ID", "_?[a-zA-Z_]+\\w*"));
 		regExps.add(new RegExp("COMMENT", "\\/\\/"));
 		regExps.add(new RegExp("COMMENT2", "(\\/\\*).*(\\*\\/)"));
 		regExps.add(new RegExp("‘", "‘"));
