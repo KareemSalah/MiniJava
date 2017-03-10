@@ -39,6 +39,40 @@ public class Main {
 		
 		ArrayList<Token> tokens = new ArrayList<>();
 		
+		// cleaning input from comment2 and string_literals first
+		for(int i = 0;i < input.length();i++) {
+			
+			// starting a string literal
+			if(input.charAt(i) == '"') {
+				for(int j = + 1;j < input.length();j++) {
+					if(input.charAt(j) == '*') {
+						Token token = new Token(i, regExps.get(2).getType(), input.substring(i, j+1));
+						tokens.add(token);
+						for(int k = i;k <= j;k++) {
+							input.setCharAt(k, terminator);
+						}
+						i = j;
+						break;
+					}
+				}
+			}
+			
+			// starting a comment2 literal
+			if(i > 0 && input.charAt(i-1)=='/' && input.charAt(i)=='*') {
+				for(int j = i + 2;j < input.length();j += 2) {
+					if(input.charAt(j) == '/' && input.charAt(j-1) == '*') {
+						Token token = new Token(i, regExps.get(0).getType(), input.substring(i, j+1));
+						tokens.add(token);
+					}
+					for(int k = i;k <= j;k++) {
+						input.setCharAt(k, terminator);
+					}
+					i = j;
+					break;
+				}
+			}
+		}
+		
 		// start matching top priority expressions first
 		// notice that IDs are matched outside this loop
 		for(int i = 0;i < regExps.size() - 1;i++) {
