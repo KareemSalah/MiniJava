@@ -16,6 +16,22 @@ public class RegExp {
 	public RegExp() {
 
 	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getRegExp() {
+		return regExp;
+	}
+
+	public void setRegExp(String regExp) {
+		this.regExp = regExp;
+	}
 
 	public ArrayList<RegExp> fill() {
 
@@ -63,7 +79,7 @@ public class RegExp {
 		regExps.add(new RegExp("INTEGRAL_LITERAL", "\\d+"));
 		regExps.add(new RegExp("FLOAT_LITERAL", "[-]?\\d+\\.\\d+"));
 		regExps.add(new RegExp("STRING_LITERAL", "\"(\\w|\\s)*\""));
-		regExps.add(new RegExp("ID", "_?[a-zA-Z_]+\w*"));
+		regExps.add(new RegExp("ID", "_?[a-zA-Z_]+\\w*"));
 		regExps.add(new RegExp("COMMENT", "\\/\\/"));
 		regExps.add(new RegExp("COMMENT2", "(\\/\\*).*(\\*\\/)"));
 		regExps.add(new RegExp("SQUOTE", "'"));
@@ -76,4 +92,5 @@ public class RegExp {
 
 	}
 
+	
 }
