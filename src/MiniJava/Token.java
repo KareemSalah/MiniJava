@@ -1,4 +1,4 @@
-package project;
+package MiniJava;
 
 public class Token {
 	public String type;

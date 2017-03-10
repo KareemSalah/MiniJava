@@ -1,4 +1,4 @@
-package project;
+package MiniJava;
 
 
 import java.io.BufferedReader;
@@ -25,6 +25,22 @@ public class main {
 
 		RegExp regExp = new RegExp();
 		regExps = regExp.fill();
+
+BufferedReader br = new BufferedReader(new FileReader("a.txt"));
+		    try {
+		        StringBuilder sb = new StringBuilder();
+		        String line = br.readLine();
+
+		        while (line != null) {
+		            sb.append(line);
+		            sb.append("\n");
+		            line = br.readLine();
+		        }
+		        System.out.println(sb.toString());
+		    } finally {
+		        br.close();
+		    }
+
 		
 		
 }
