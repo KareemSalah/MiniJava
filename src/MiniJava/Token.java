@@ -38,4 +38,14 @@ public class Token {
 		this.offset = offset;
 	}
 
+
+	@Override
+	public String toString() {
+		String str = new String("");
+		str = "<" + this.type + ", " + this.value + ">";
+		return str;
+	}
+	
+	
+
 }

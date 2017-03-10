@@ -4,8 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 public class Main {
 	
@@ -48,9 +52,22 @@ public class Main {
 			System.out.println(e.message);
 		} catch(Exception e) {
 			e.printStackTrace();
-		} finally {
 			System.out.println("Terminating");
-			return;
+		}
+		
+		java.util.Collections.sort(tokens, new Comparator<Token>(){
+			public int compare(Token t1, Token t2) {
+				if(t1.getOffset() > t2.getOffset())
+					return 1;
+				if(t1.getOffset() < t2.getOffset())
+					return -1;
+				return 0;
+			}
+		});
+		
+		System.out.println("Success");
+		for(Token token : tokens) {
+			System.out.println(token.toString());
 		}
 		
 	}
@@ -133,7 +150,7 @@ public class Main {
 		
 		// detecting non-matched tokens
 		for(int i = 0;i < input.length();i++) {
-			if(input.charAt(i) != '#') {
+			if(input.charAt(i) != '#' && input.charAt(i) != ' ') {
 				throw new InvalidTokenException();
 			}
 		}
