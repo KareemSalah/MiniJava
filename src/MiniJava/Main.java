@@ -28,7 +28,7 @@ public class Main {
 		
 		
 		
-		BufferedReader br = new BufferedReader(new FileReader("a.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("TC2.txt"));
 	    try {
 	        
 	        String line = br.readLine();
@@ -50,6 +50,7 @@ public class Main {
 		} catch(InvalidTokenException e) {
 			e.printStackTrace();
 			System.out.println(e.message);
+			return;
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("Terminating");
@@ -83,7 +84,7 @@ public class Main {
 			if(input.charAt(i) == '"') {
 				for(int j = i + 1;j < input.length();j++) {
 					if(input.charAt(j) == '"') {
-						Token token = new Token(i, regExps.get(1).getType(), input.substring(i, j+1));
+						Token token = new Token(i, regExps.get(4).getType(), input.substring(i, j+1));
 						tokens.add(token);
 						for(int k = i;k <= j;k++) {
 							input.setCharAt(k, terminator);
@@ -98,14 +99,14 @@ public class Main {
 			if(i > 0 && input.charAt(i-1)=='/' && input.charAt(i)=='*') {
 				for(int j = i + 2;j < input.length();j += 2) {
 					if(input.charAt(j) == '/' && input.charAt(j-1) == '*') {
-						Token token = new Token(i, regExps.get(0).getType(), input.substring(i, j+1));
+						Token token = new Token(i, regExps.get(1).getType(), input.substring(i-1, j+1));
 						tokens.add(token);
+						for(int k = i-1;k <= j;k++) {
+							input.setCharAt(k, terminator);
+						}
+						i = j;
+						break;
 					}
-					for(int k = i;k <= j;k++) {
-						input.setCharAt(k, terminator);
-					}
-					i = j;
-					break;
 				}
 			}
 		}

@@ -55,9 +55,9 @@ public class RegExp {
 		
 		regExps.add(new RegExp("COMMENT1", "\\b\\/\\/\\b"));
 		regExps.add(new RegExp("COMMENT2", "(\\/\\*).*(\\*\\/)"));
-		regExps.add(new RegExp("COMMENT_L", "\\b\\/\\*\\b"));
+		regExps.add(new RegExp("COMMENT_L", "\\/\\*"));
 
-		regExps.add(new RegExp("COMMENT_R", "\\b\\*\\/\\b"));
+		regExps.add(new RegExp("COMMENT_R", "\\*\\/"));
 
 		
 		regExps.add(new RegExp("STRING_LITERAL", "\"(.)*\"")); // msh fhma da \"[^\"\\\\]*(\\\\.[^\"\\\\]*)*\"
@@ -66,7 +66,7 @@ public class RegExp {
 		
 		regExps.add(new RegExp("FLOAT_LITERAL", "[-]?\\d+\\.\\d+"));
 		regExps.add(new RegExp("INTEGRAL_LITERAL", "\\d+"));
-		regExps.add(new RegExp("SYSTEM.OUT.PRINTLN", "\\bsystem\\.out\\.println\\b"));
+		regExps.add(new RegExp("SYSTEM.OUT.PRINTLN", "\\bSystem\\.out\\.println\\b"));
 		
 
 		regExps.add(new RegExp("INT", "\\bint\\b"));
@@ -74,7 +74,7 @@ public class RegExp {
 		regExps.add(new RegExp("STRING", "(^String|(?<= )String)(?=\\s*\\w(\\w)*(\\s)*(=|;))")); // lessa b7awl azbtha m3 d |(?<=(\\s*)String (?=\\s*..*))) ,, yla2e String fl awl aw b3d space *3shan l access modifiers* w b3deen lazm shwyt kalam w lazm fl a5r ; aw = 
 		regExps.add(new RegExp("BOOLEAN", "\\b(\\s|\\n)boolean\\s\\b"));
 		regExps.add(new RegExp("FLOAT", "\\bfloat\\b"));		
-		regExps.add(new RegExp("CLASS", "\\b( class |^class)\\b"));
+		regExps.add(new RegExp("CLASS", "\\bclass\\b"));
 		regExps.add(new RegExp("VOID", "\\bvoid\\b"));
 		regExps.add(new RegExp("PUBLIC", "\\bpublic\\b"));
 		regExps.add(new RegExp("STATIC", "\\bstatic\\b"));

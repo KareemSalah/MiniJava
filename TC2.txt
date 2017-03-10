@@ -1,0 +1,19 @@
+class myClass{
+private int x;
+private String s;
+
+public void myClass(float f, String str)
+{
+x=f;
+s=str;
+}
+
+public static void trialmain()
+{
+if(x<0)
+;
+else if(x>10.5){
+/* int String[5];
+}
+}
+}
