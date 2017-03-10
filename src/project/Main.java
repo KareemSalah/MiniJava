@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MiniJava {
+public class Main {
 	
 	public static ArrayList<RegExp> regExps = new ArrayList<>();
 	public static Character terminator = '#';

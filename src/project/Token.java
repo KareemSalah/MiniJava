@@ -13,6 +13,7 @@ public class Token {
 		this.value = value;
 	}
 	
+
 	public String getType() {
 		return type;
 	}
