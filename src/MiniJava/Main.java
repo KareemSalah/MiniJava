@@ -28,7 +28,7 @@ public class Main {
 		
 		
 		
-		BufferedReader br = new BufferedReader(new FileReader("TC3.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("TC2.txt"));
 	    try {
 	        
 	        String line = br.readLine();
@@ -54,6 +54,7 @@ public class Main {
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("Terminating");
+			return;
 		}
 		
 		java.util.Collections.sort(tokens, new Comparator<Token>(){
