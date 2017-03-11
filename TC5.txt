@@ -1,5 +1,7 @@
 int / x = 10;
+int y = new int[123];
 float f = 11.0;
-float n = 0.12;
-String str = "hello world";
+float _123 = 0.12;
+int ab12354_ =5;
+String str = "hello wo123rld";
 System.out.println(str + "," + str.length());

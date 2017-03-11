@@ -30,8 +30,7 @@ public class Main {
 		// Should replace this line and get code from file and store in
 		// stringBuilder
 		StringBuilder input = new StringBuilder();
-
-		BufferedReader br = new BufferedReader(new FileReader("TC4.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("TC5.txt"));
 		try {
 
 			String line = br.readLine();
@@ -43,7 +42,6 @@ public class Main {
 		} finally {
 			br.close();
 		}
-
 		// tokenizing the code
 		ArrayList<Token> tokens = new ArrayList<>();
 		try {

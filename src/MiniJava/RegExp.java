@@ -63,7 +63,7 @@ public class RegExp {
 
 		
 		regExps.add(new RegExp("FLOAT_LITERAL", "[-]?\\d+\\.\\d+"));
-		regExps.add(new RegExp("INTEGRAL_LITERAL", "\\d+"));
+		regExps.add(new RegExp("INTEGRAL_LITERAL", "\\b\\d+"));
 		regExps.add(new RegExp("SYSTEM.OUT.PRINTLN", "\\bSystem\\.out\\.println\\b"));
 		
 		regExps.add(new RegExp("MAIN","(?<=public static void )main(?=\\s*\\(String\\s\\[\\] args\\))"));

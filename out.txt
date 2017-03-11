@@ -1,54 +1,63 @@
 Successs
-<PUBLIC, public>
-<ID, main>
-<LEFT_ROUND_B, (>
-<RIGHT_ROUND_B, )>
-<LEFT_CURLY_B, {>
-<EOL, 
->
-<ID, intvalue>
+<INT, int>
+<Error, />
+<ID, x>
 <EQUAL, =>
 <INTEGRAL_LITERAL, 10>
 <SEMICOLON, ;>
 <EOL, 
 >
-<Error, />
-<Error, />
+<INT, int>
+<ID, y>
+<EQUAL, =>
+<NEW, new>
+<INT, int>
+<LEFT_SQUARE_B, [>
+<INTEGRAL_LITERAL, 123>
+<RIGHT_SQUARE_B, ]>
+<SEMICOLON, ;>
 <EOL, 
 >
-<RIGHT_CURLY_B, }>
-<Error, \>
+<FLOAT, float>
+<ID, f>
+<EQUAL, =>
+<FLOAT_LITERAL, 11.0>
+<SEMICOLON, ;>
+<EOL, 
+>
+<FLOAT, float>
+<ID, _123>
+<EQUAL, =>
+<FLOAT_LITERAL, 0.12>
+<SEMICOLON, ;>
 <EOL, 
 >
 <INT, int>
-<ID, value>
+<ID, ab12354_>
 <EQUAL, =>
-<INTEGRAL_LITERAL, 10>
-<Error, />
 <INTEGRAL_LITERAL, 5>
 <SEMICOLON, ;>
 <EOL, 
 >
 <STRING, String>
-<ID, String>
+<ID, str>
 <EQUAL, =>
-<STRING_LITERAL, "Hi">
+<STRING_LITERAL, "hello wo123rld">
 <SEMICOLON, ;>
 <EOL, 
 >
-<BOOLEAN, boolean>
-<ID, b>
-<EQUAL, =>
-<TRUE, true>
-<SEMICOLON, ;>
-<EOL, 
->
-<STRING, String>
-<ID, s>
-<EQUAL, =>
-<STRING_LITERAL, "fdhfd">
-<ID, dfhd>
-<DQUOTE, ">
+<SYSTEM.OUT.PRINTLN, System.out.println>
+<LEFT_ROUND_B, (>
+<ID, str>
+<PLUS, +>
+<STRING_LITERAL, ",">
+<PLUS, +>
+<ID, str>
+<DOT, .>
+<LENGTH, length>
+<LEFT_ROUND_B, (>
+<RIGHT_ROUND_B, )>
+<RIGHT_ROUND_B, )>
 <SEMICOLON, ;>
 <EOL, 
 >
