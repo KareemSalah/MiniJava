@@ -1,0 +1,6 @@
+String String = "tst";
+String = "Hi";
+String String = "First";
+String = "Second";
+String xString = "Third";
+xString = "Fourth";

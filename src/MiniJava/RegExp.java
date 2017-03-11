@@ -71,7 +71,7 @@ public class RegExp {
 
 		regExps.add(new RegExp("INT", "\\bint\\b"));
 		regExps.add(new RegExp("CHARACTER", "\\bchar\\b"));
-		regExps.add(new RegExp("STRING", "(^String|(?<= )String)(?=\\s*\\w(\\w)*(\\s)*(=|;))")); // lessa b7awl azbtha m3 d |(?<=(\\s*)String (?=\\s*..*))) ,, yla2e String fl awl aw b3d space *3shan l access modifiers* w b3deen lazm shwyt kalam w lazm fl a5r ; aw = 
+		regExps.add(new RegExp("STRING", "(?<!(String\\s))(?<=\\n|\\s|^)String(?=\\s\\s*\\w(\\w)*(\\s)*(=|;))")); // lessa b7awl azbtha m3 d |(?<=(\\s*)String (?=\\s*..*))) ,, yla2e String fl awl aw b3d space *3shan l access modifiers* w b3deen lazm shwyt kalam w lazm fl a5r ; aw = 
 		regExps.add(new RegExp("BOOLEAN", "\\b(\\s|\\n)boolean\\s\\b"));
 		regExps.add(new RegExp("FLOAT", "\\bfloat\\b"));		
 		regExps.add(new RegExp("CLASS", "\\bclass\\b"));

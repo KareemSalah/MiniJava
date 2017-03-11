@@ -28,7 +28,7 @@ public class Main {
 		
 		
 		
-		BufferedReader br = new BufferedReader(new FileReader("TC2.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("TC3.txt"));
 	    try {
 	        
 	        String line = br.readLine();
