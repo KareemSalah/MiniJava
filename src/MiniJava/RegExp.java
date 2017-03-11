@@ -51,16 +51,14 @@ public class RegExp {
 	public ArrayList<RegExp> fill() {
 
 		ArrayList<RegExp> regExps = new ArrayList<>();
-		
-		
-		regExps.add(new RegExp("COMMENT1", "\\b\\/\\/\\b"));
+		regExps.add(new RegExp("COMMENT1", "\\/\\/"));
 		regExps.add(new RegExp("COMMENT2", "(\\/\\*).*(\\*\\/)"));
 		regExps.add(new RegExp("COMMENT_L", "\\/\\*"));
 
 		regExps.add(new RegExp("COMMENT_R", "\\*\\/"));
 
 		
-		regExps.add(new RegExp("STRING_LITERAL", "\"(.)*\"")); // msh fhma da \"[^\"\\\\]*(\\\\.[^\"\\\\]*)*\"
+		regExps.add(new RegExp("STRING_LITERAL", "(\"[^\"\\\\]*(\\\\.[^\"\\\\]*)*\"(?=!(.*\")))")); // check en fe " then ay bs msh " wla \ w b3deen 
 		regExps.add(new RegExp("A_CHAR", "\'.\'"));
 
 		
@@ -68,11 +66,12 @@ public class RegExp {
 		regExps.add(new RegExp("INTEGRAL_LITERAL", "\\d+"));
 		regExps.add(new RegExp("SYSTEM.OUT.PRINTLN", "\\bSystem\\.out\\.println\\b"));
 		
-
+		regExps.add(new RegExp("MAIN","(?<=public static void )main(?=\\s*\\(String\\s\\[\\] args\\))"));
+		
 		regExps.add(new RegExp("INT", "\\bint\\b"));
 		regExps.add(new RegExp("CHARACTER", "\\bchar\\b"));
-		regExps.add(new RegExp("STRING", "(?<!(String\\s))(?<=\\n|\\s|^)String(?=\\s\\s*\\w(\\w)*(\\s)*(=|;))")); // lessa b7awl azbtha m3 d |(?<=(\\s*)String (?=\\s*..*))) ,, yla2e String fl awl aw b3d space *3shan l access modifiers* w b3deen lazm shwyt kalam w lazm fl a5r ; aw = 
-		regExps.add(new RegExp("BOOLEAN", "\\b(\\s|\\n)boolean\\s\\b"));
+		regExps.add(new RegExp("STRING", "((?<!(String\\s))(?<=\\n|\\s|^)String(?=\\s\\s*\\w(\\w)*(\\s)*(=|;))|(?<=\\()String(?= .(\\.*|\\))))")); // yla2e String fl awl aw b3d space *3shan l access modifiers* aw new line *3shan lw code 3la b3du bl String Builder* ,, w b3deen lazm shwyt kalam w lazm fl a5r ; aw = AW yla2e ( w mmkn shwyt spaces w b3den String w b3deen shwyt kalam w b3deen )
+		regExps.add(new RegExp("BOOLEAN", "\\bboolean\\b"));
 		regExps.add(new RegExp("FLOAT", "\\bfloat\\b"));		
 		regExps.add(new RegExp("CLASS", "\\bclass\\b"));
 		regExps.add(new RegExp("VOID", "\\bvoid\\b"));
@@ -84,7 +83,7 @@ public class RegExp {
 		regExps.add(new RegExp("FALSE", "\\bfalse\\b"));
 		regExps.add(new RegExp("THIS", "\\bthis\\b"));
 		regExps.add(new RegExp("WHILE", "\\bwhile\\b"));
-		regExps.add(new RegExp("LENGTH", "\\blength\\b"));
+		regExps.add(new RegExp("LENGTH", "(?<=\\.)length(?=(\\(\\)|\\b))"));
 		regExps.add(new RegExp("RETURN", "\\breturn\\b"));
 		regExps.add(new RegExp("IF", "\\bif\\b"));
 		regExps.add(new RegExp("ELSE", "\\belse\\b"));
@@ -113,14 +112,10 @@ public class RegExp {
 		regExps.add(new RegExp("GREATERTHAN", ">"));
 		regExps.add(new RegExp("SQUOTE", "'"));
 		regExps.add(new RegExp("DQUOTE", "\""));
-
 		
 
-		regExps.add(new RegExp("MAIN","(?<=public static void )main(?=\\s*\\(String\\s\\[\\] args\\))"));
 		regExps.add(new RegExp("ID", "\\b_?[a-zA-Z_]+\\w*\\b"));
 
 		return regExps;
 	}
-
-	
 }
