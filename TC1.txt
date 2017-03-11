@@ -1,0 +1,5 @@
+int intX = 2400;
+/* my comment nto float or String */ float stringvoid = -9.2;
+String s = "hello world";
+System.out.println(s);
+System.out.println("i am a string");
