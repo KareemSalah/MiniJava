@@ -1,0 +1,5 @@
+int / x = 10;
+float f = 11.0;
+float n = 0.12;
+String str = "hello world";
+System.out.println(str + "," + str.length());
