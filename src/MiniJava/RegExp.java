@@ -83,7 +83,7 @@ public class RegExp {
 		regExps.add(new RegExp("FALSE", "\\bfalse\\b"));
 		regExps.add(new RegExp("THIS", "\\bthis\\b"));
 		regExps.add(new RegExp("WHILE", "\\bwhile\\b"));
-		regExps.add(new RegExp("LENGTH", "(?<=\\.)length(?=(\\(\\)|\\b))"));
+		regExps.add(new RegExp("LENGTH", "\\blength\\b"));
 		regExps.add(new RegExp("RETURN", "\\breturn\\b"));
 		regExps.add(new RegExp("IF", "\\bif\\b"));
 		regExps.add(new RegExp("ELSE", "\\belse\\b"));
