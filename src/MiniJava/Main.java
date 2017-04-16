@@ -30,7 +30,7 @@ public class Main {
 		// Should replace this line and get code from file and store in
 		// stringBuilder
 		StringBuilder input = new StringBuilder();
-		BufferedReader br = new BufferedReader(new FileReader("TC5.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("TC4.txt"));
 		try {
 
 			String line = br.readLine();

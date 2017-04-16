@@ -66,11 +66,11 @@ public class RegExp {
 		regExps.add(new RegExp("INTEGRAL_LITERAL", "\\b\\d+"));
 		regExps.add(new RegExp("SYSTEM.OUT.PRINTLN", "\\bSystem\\.out\\.println\\b"));
 		
-		regExps.add(new RegExp("MAIN","(?<=public static void )main(?=\\s*\\(String\\s\\[\\] args\\))"));
+		regExps.add(new RegExp("MAIN","\\bmain\\b"));
 		
 		regExps.add(new RegExp("INT", "\\bint\\b"));
 		regExps.add(new RegExp("CHARACTER", "\\bchar\\b"));
-		regExps.add(new RegExp("STRING", "((?<!(String\\s))(?<=\\n|\\s|^)String(?=\\s\\s*\\w(\\w)*(\\s)*(=|;))|(?<=\\()String(?= .(\\.*|\\))))")); // yla2e String fl awl aw b3d space *3shan l access modifiers* aw new line *3shan lw code 3la b3du bl String Builder* ,, w b3deen lazm shwyt kalam w lazm fl a5r ; aw = AW yla2e ( w mmkn shwyt spaces w b3den String w b3deen shwyt kalam w b3deen )
+		regExps.add(new RegExp("STRING", "\\bString\\b"));
 		regExps.add(new RegExp("BOOLEAN", "\\bboolean\\b"));
 		regExps.add(new RegExp("FLOAT", "\\bfloat\\b"));		
 		regExps.add(new RegExp("CLASS", "\\bclass\\b"));

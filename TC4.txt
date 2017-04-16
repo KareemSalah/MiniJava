@@ -6,3 +6,4 @@ int value=10/5;
 String String="Hi";
 boolean b=true;
 String s= "fdhfd"dfhd"; 
+String main;
