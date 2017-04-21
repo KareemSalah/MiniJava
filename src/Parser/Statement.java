@@ -1,11 +1,6 @@
 package Parser;
 
-public class Statement implements Node{
-
-	public void printNode() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
+public interface Statement extends Node{
+	@Override
+	public void printNode();
 }
