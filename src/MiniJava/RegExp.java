@@ -77,6 +77,7 @@ public class RegExp {
 		regExps.add(new RegExp("VOID", "\\bvoid\\b"));
 		regExps.add(new RegExp("PUBLIC", "\\bpublic\\b"));
 		regExps.add(new RegExp("STATIC", "\\bstatic\\b"));
+		regExps.add(new RegExp("PRIVATE", "\\bPRIVATE\\b"));
 		regExps.add(new RegExp("NEW", "\\bnew\\b"));
 		regExps.add(new RegExp("EXTENDS", "\\bextends\\b"));
 		regExps.add(new RegExp("TRUE", "\\btrue\\b"));

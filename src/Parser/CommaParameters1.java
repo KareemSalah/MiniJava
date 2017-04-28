@@ -4,12 +4,12 @@ import MiniJava.*;
 public class CommaParameters1 implements CommaParameters,Node{
 	Token Comma;
 	Parameter P;
-	CommaParameters1 CP1;
-	public CommaParameters1(Token comma, Parameter p, CommaParameters1 cP1) {
+	CommaParameters CP1;
+	public CommaParameters1(Token comma, Parameter p, CommaParameters cP1) {
 		super();
 		Comma = comma;
 		P = p;
-		CP1 = cP1;
+		CP1 =  cP1;
 	}
 	@Override
 	public void printNode() {

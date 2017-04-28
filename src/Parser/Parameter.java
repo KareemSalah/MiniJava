@@ -3,6 +3,11 @@ package Parser;
 public class Parameter implements Node{
    Type type;
    Identifier id;
+public Parameter(Type type, Identifier id) {
+	super();
+	this.type = type;
+	this.id = id;
+}
 @Override
 public void printNode() {
 	// TODO Auto-generated method stub

@@ -1,6 +1,7 @@
 package Parser;
 
-public interface StatementDash extends Node {
+public interface ElseStatement extends Node {
 	@Override
 	public void printNode();
+
 }

@@ -2,13 +2,13 @@ package Parser;
 
 import MiniJava.Token;
 
-public class DotFuction2 implements DotFunction {
+public class DotFunction2 implements DotFunction {
 	private Identifier identifier;
 	private Token openCircleBrackets;
 	private SomeExpressions someExpressions;
 	private Token closedCircleBrackets;
 	
-	public DotFuction2(Identifier identifier, Token openCircleBrackets, SomeExpressions someExpressions,
+	public DotFunction2(Identifier identifier, Token openCircleBrackets, SomeExpressions someExpressions,
 			Token closedCircleBrackets) {
 		super();
 		this.identifier = identifier;
