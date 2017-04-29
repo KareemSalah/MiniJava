@@ -261,8 +261,14 @@ public class Parser {
 	}
 
 	private StatementDash stmtDashRule() {
-		// TODO Auto-generated method stub
-		return null;
+		Statement stmt = stmtRule();
+		if(stmt!=null){
+			StatementDash stmtDash = stmtDashRule();
+			if(stmtDash!=null){
+				return new StatementDash1(stmt,stmtDash);
+			}
+		}
+		return new StatementDash2(new Epsilon());
 	}
 
 	/*
@@ -327,8 +333,125 @@ public class Parser {
 	}
 
 	private Statement stmtRule() {
-		// TODO Auto-generated method stub
+		Token first_token = queue.peek();
+		if(first_token!=null && first_token.getType().equals("LEFT_CURLY_B")){
+			queue.poll();
+			StatementDash stmtDash = stmtDashRule();
+			if(stmtDash!=null){
+				Token right_curly_bracket = queue.peek();
+				if(right_curly_bracket!=null && right_curly_bracket.getType().equals("RIGHT_CURLY_B")){
+					queue.poll();
+					return new Statement1(first_token,stmtDash,right_curly_bracket);
+				}
+			}
+		}
+		else if(first_token!=null && first_token.getType().equals("IF")){
+				queue.poll();
+				Token left_bracket = queue.peek();
+				if(left_bracket!=null && left_bracket.getType().equals("LEFT_ROUND_B")){
+					queue.poll();
+					Expression expression = expressionRule();
+					if(expression!=null){
+						Token right_bracket = queue.peek();
+						if(right_bracket!=null && right_bracket.getType().equals("RIGHT_ROUND_B")){
+							queue.poll();
+							Statement stmt = stmtRule();
+							if(stmt!=null){
+								ElseStatement elseStmt = elseStmtRule();
+								if(elseStmt!=null){
+									return new Statement2(left_bracket,right_bracket,first_token,expression,stmt,elseStmt);
+								}
+						}
+					}
+				}
+			}
+		}
+		else if(first_token!=null && first_token.getType().equals("WHILE")){
+			queue.poll();
+			Token left_bracket = queue.peek();
+			if(left_bracket!=null && left_bracket.getType().equals("LEFT_ROUND_B")){
+				queue.poll();
+				Expression expression = expressionRule();
+				if(expression!=null){
+					Token right_bracket = queue.peek();
+					if(right_bracket!=null && right_bracket.getType().equals("RIGHT_ROUND_B")){
+						queue.poll();
+						Statement stmt = stmtRule();
+						if(stmt!=null){
+							return new Statement3(first_token,left_bracket,right_bracket,expression,stmt);
+						}
+						
+					}
+					}
+				}
+		}
+		else if(first_token!=null && first_token.getType().equals("SYSTEM.OUT.PRINTLN")){
+			queue.poll();
+			Token left_bracket = queue.peek();
+			if(left_bracket!=null && left_bracket.getType().equals("LEFT_ROUND_B")){
+				queue.poll();
+				Expression expression = expressionRule();
+				if(expression!=null){
+					Token right_bracket = queue.peek();
+					if(right_bracket!=null && right_bracket.getType().equals("RIGHT_ROUND_B")){
+						Token semicolon = queue.peek();
+						if(semicolon!=null && semicolon.getType().equals("SEMICOLON")){
+							queue.poll();
+							return new Statement4(first_token,left_bracket,right_bracket,expression,semicolon);
+						}
+					}	
+				}
+			}
+		}
+		else{
+			Identifier identifier = identifierRule();
+			if(identifier!=null){
+				SquareBracketsStatement squareStmt = squareBracketsStmtRule();
+				if(squareStmt!=null){
+					Token equal = queue.peek();
+					if(equal !=null&&equal.getType().equals("EQUAL")){
+						queue.poll();
+						Expression expression = expressionRule();
+						if(expression!=null){
+							Token semicolon = queue.peek();
+							if(semicolon!=null && semicolon.getType().equals("SEMICOLON")){
+								queue.poll();
+								return new Statement5(identifier,squareStmt,equal,expression,semicolon);
+							}
+						}
+					}
+				}
+			}
+		}
 		return null;
+	}
+	
+	private ElseStatement elseStmtRule(){
+		Token elseToken = queue.peek();
+		if(elseToken!=null && elseToken.getType().equals("ELSE")){
+			queue.poll();
+			Statement stmt = stmtRule();
+			if(stmt!=null){
+				return new ElseStatement1(elseToken, stmt);
+			}
+		}
+		return new ElseStatement2(new Epsilon());
+	}
+	
+	private SquareBracketsStatement squareBracketsStmtRule(){
+		Token left_square_bracket = queue.peek();
+		if(left_square_bracket!=null && left_square_bracket.getType().equals("LEFT_SQUARE_B")){
+			queue.poll();
+			Expression expression = expressionRule();
+			if(expression!=null){
+				Token right_square_bracket = queue.peek();
+				if(right_square_bracket!=null && right_square_bracket.getType().equals("RIGHT_SQUARE_B")){
+					queue.poll();
+					return new SquareBracketsStatement1(left_square_bracket,expression,right_square_bracket);
+				}
+			}
+		}
+		return new SquareBracketsStatement2(new Epsilon());
 	}
 
 	private Expression expressionRule() {
@@ -545,6 +668,34 @@ public class Parser {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	private ClassDeclarations classDeclarationsRule(){
+		ClassDeclaration classDeclaration = classDeclarationRule();
+		if(classDeclaration!=null){
+			ClassDeclarations classDeclarations = classDeclarationsRule();
+			if(classDeclarations!=null){
+				return new ClassDeclarations1(classDeclaration,classDeclarations);
+			}
+		}
+		return new ClassDeclarations2(new Epsilon());
+	}
+	
+	private Goal goalRule(){
+		MainClass mainClass = mainClassRule();
+		if(mainClass != null){
+			ClassDeclarations classDeclarations = classDeclarationsRule();
+			if(classDeclarations!=null){
+				Token eol = queue.peek();
+				if(eol!= null && eol.getType().equals("EOL")){
+					queue.poll();
+					return new Goal(mainClass,classDeclarations,eol);
+				}
+			}
+		}
+		return null;
+	}
+	
+	
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
