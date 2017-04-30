@@ -7,6 +7,13 @@ public class Goal implements Node {
 	private ClassDeclarations classDeclarations;
 	private Token eof;
 	
+	public Goal(MainClass mainClass, ClassDeclarations classDeclarations,
+			Token eof) {
+		super();
+		this.mainClass = mainClass;
+		this.classDeclarations = classDeclarations;
+		this.eof = eof;
+	}
 	
 	@Override
 	public void printNode() {

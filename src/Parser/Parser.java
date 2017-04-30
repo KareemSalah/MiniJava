@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import MiniJava.Lexiacalanalysis;
-import MiniJava.Token;
+import MiniJava.*;
 
 public class Parser {
 	Queue<Token> queue = new LinkedList<Token>();
@@ -15,14 +14,17 @@ public class Parser {
 	public Parser(String fileName) throws IOException {
 		// TODO Auto-generated constructor stub
 		Tokens = getTokens(fileName);
+		
 		for (int i = 0; i < Tokens.size(); i++) {
 			queue.add(Tokens.get(i));
 		}
-		for (int i = 0; i < queue.size(); i++) {
+		System.out.println(queue.size());
+		/*for (int i = 0; i < queue.size(); i++) {
+			System.out.println(queue.peek());
 			Token t = queue.peek();
 			System.out.println(t.toString());
 			queue.poll();
-		}
+		}*/
 
 	}
 
@@ -35,96 +37,93 @@ public class Parser {
 	// MainClass ::= "class" Identifier "{" "public" "static" "void" "main" "("
 	// "String" "[""]" Identifier ")"
 	// "{" Statement "}" "}"
-	public Token getToken() {
-		Token t = queue.peek();
-		return t;
-	}
+
 
 	private MainClass mainClassRule() {
 		Token t, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13;
 		t = queue.peek();
-		if (t.getType() != "CLASS") {
+		if (!t.getType().equals("CLASS") ) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		Identifier id1 = identifierRule();
 		t1 = queue.peek();
-		if (t1.getType() != "LEFT_CURLY_B") {
+		if (!t1.getType().equals("LEFT_CURLY_B") ) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		t2 = queue.peek();
-		if (t2.getType() != "PUBLIC") {
+		if (!t2.getType().equals("PUBLIC")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		t3 = queue.peek();
-		if (t3.getType() != "STATIC") {
+		if (!t3.getType().equals("STATIC")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		t4 = queue.peek();
-		if (t4.getType() != "VOID") {
+		if (!t4.getType().equals("VOID") ) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		t5 = queue.peek();
-		if (t5.getType() != "MAIN") {
+		if (!t5.getType().equals("MAIN")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		t6 = queue.peek();
-		if (t6.getType() != "LEFT_ROUND_B") {
+		if (!t6.getType().equals("LEFT_ROUND_B") ) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		t7 = queue.peek();
-		if (t7.getType() != "STRING") {
+		if (!t7.getType().equals("STRING")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		t8 = queue.peek();
-		if (t8.getType() != "LEFT_SQUARE_B") {
+		if (!t8.getType().equals("LEFT_SQUARE_B")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		t9 = queue.peek();
-		if (t9.getType() != "RIGHT_SQUARE_B") {
+		if (!t9.getType().equals("RIGHT_SQUARE_B")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		Identifier id2 = identifierRule();
 		t10 = queue.peek();
-		if (t10.getType() != "RIGHT_ROUND_B") {
+		if (!t10.getType().equals("RIGHT_ROUND_B")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		t11 = queue.peek();
-		if (t11.getType() != "LEFT_CURLY_B") {
+		if (!t11.getType().equals("LEFT_CURLY_B")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		Statement stmt = stmtRule();
 		t12 = queue.peek();
-		if (t12.getType() != "RIGHT_CURLY_B") {
+		if (!t12.getType().equals("RIGHT_CURLY_B")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		t13 = queue.peek();
-		if (t13.getType() != "RIGHT_CURLY_B") {
+		if (!t13.getType().equals("RIGHT_CURLY_B")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
@@ -200,6 +199,7 @@ public class Parser {
 		return new MethodDeclarations2(new Epsilon());
 	}
 
+
 	private MethodDeclaration methodDeclarationRule() {
 		Token Left_Round_B, Right_Round_B, Left_Curly_B, Return, Semicolon, Right_Curly_B;
 		AccessSpecifier access;
@@ -221,13 +221,13 @@ public class Parser {
 
 		ps = parametersRule();
 		Right_Round_B = queue.peek();
-		if (Right_Round_B.getType() != "RIGHT_ROUND_B") {
+		if (!Right_Round_B.getType().equals("RIGHT_ROUND_B")) {
 			System.out.println("Syntax Error");
 			return null;
 		} else
 			queue.poll();
 		Left_Curly_B = queue.peek();
-		if (Left_Curly_B.getType() != "LEFT_CURLY_B") {
+		if (!Left_Curly_B.getType().equals("LEFT_CURLY_B")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
@@ -236,20 +236,20 @@ public class Parser {
 		var = varDeclarationsRule();
 		stmt = stmtDashRule();
 		Return = queue.peek();
-		if (Return.getType() != "RETURN") {
+		if (!Return.getType().equals("RETURN")) {
 			System.out.println("Syntax Error");
 			return null;
 		} else
 			queue.poll();
 		exp = expressionRule();
 		Semicolon = queue.peek();
-		if (Semicolon.getType() != "SEMICOLON") {
+		if (!Semicolon.getType().equals("SEMICOLON")) {
 			System.out.println("Syntax Error ");
 			return null;
 		} else
 			queue.poll();
 		Right_Curly_B = queue.peek();
-		if (Right_Curly_B.getType() != "RIGHT_CURLY_B") {
+		if (!Right_Curly_B.getType().equals("RIGHT_CURLY_B")) {
 			System.out.println("Syntax Error");
 			return null;
 		} else
@@ -260,75 +260,141 @@ public class Parser {
 
 	}
 
+	
+	
+
 	private StatementDash stmtDashRule() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/*
-	 * 
-	 * Parameters ::= Parameter CommaParameters | Lambda
-	 */
-	private Parameters parametersRule() {
-		// TODO Auto-generated method stub
-		Parameter p = ParameterRule();
-		if (p == null) {
-			Parameters pS = new Parameters2();
-			return pS;
+		Statement stmt = stmtRule();
+		if(stmt!=null){
+			StatementDash stmtDash = stmtDashRule();
+			if(stmtDash!=null){
+				return new StatementDash1(stmt,stmtDash);
+			}
 		}
-		CommaParameters c = CommaParametersRule();
-		Parameters pS = new Parameters1(p, c);
-		return pS;
-
+		return new StatementDash2(new Epsilon());
 	}
-	// CommaParameters ::= "," Parameter CommaParameters | Lambda
-
-	private CommaParameters CommaParametersRule() {
-		// TODO Auto-generated method stub
-		Token t = queue.peek();
-		if (t.getType() != "COMMA") {
-			CommaParameters c = new CommaParameters2();
-			return c;
-		}
-		Parameter p = ParameterRule();
-		CommaParameters cP = CommaParametersRule();
-		CommaParameters c = new CommaParameters1(t, p, cP);
-		return c;
-
-	}
-
-	// Parameter ::= Type Identifier
-	private Parameter ParameterRule() {
-		// TODO Auto-generated method stub
-
-		Type t = typeRule();
-		Identifier id = identifierRule();
-		return new Parameter(t, id);
-	}
-
-	private Type typeRule() {
-
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private AccessSpecifier accessSpecifierRule() {
-		// TODO Auto-generated method stub
-		Token t = queue.peek();
-		if (t.equals("PRIVATE")) {
-			AccessSpecifier a = new AccessSpecifier1(t);
-			return a;
-		} else if (t.equals("PUBLIC")) {
-			AccessSpecifier a = new AccessSpecifier2(t);
-			return a;
-
-		}
-		return null;
-	}
+	
 
 	private Statement stmtRule() {
-		// TODO Auto-generated method stub
+		Token first_token = queue.peek();
+		if(first_token!=null && first_token.getType().equals("LEFT_CURLY_B")){
+			queue.poll();
+			StatementDash stmtDash = stmtDashRule();
+			if(stmtDash!=null){
+				Token right_curly_bracket = queue.peek();
+				if(right_curly_bracket!=null && right_curly_bracket.getType().equals("RIGHT_CURLY_B")){
+					queue.poll();
+					return new Statement1(first_token,stmtDash,right_curly_bracket);
+				}
+			}
+		}
+		else if(first_token!=null && first_token.getType().equals("IF")){
+				queue.poll();
+				Token left_bracket = queue.peek();
+				if(left_bracket!=null && left_bracket.getType().equals("LEFT_ROUND_B")){
+					queue.poll();
+					Expression expression = expressionRule();
+					if(expression!=null){
+						Token right_bracket = queue.peek();
+						if(right_bracket!=null && right_bracket.getType().equals("RIGHT_ROUND_B")){
+							queue.poll();
+							Statement stmt = stmtRule();
+							if(stmt!=null){
+								ElseStatement elseStmt = elseStmtRule();
+								if(elseStmt!=null){
+									return new Statement2(left_bracket,right_bracket,first_token,expression,stmt,elseStmt);
+								}
+						}
+					}
+				}
+			}
+		}
+		else if(first_token!=null && first_token.getType().equals("WHILE")){
+			queue.poll();
+			Token left_bracket = queue.peek();
+			if(left_bracket!=null && left_bracket.getType().equals("LEFT_ROUND_B")){
+				queue.poll();
+				Expression expression = expressionRule();
+				if(expression!=null){
+					Token right_bracket = queue.peek();
+					if(right_bracket!=null && right_bracket.getType().equals("RIGHT_ROUND_B")){
+						queue.poll();
+						Statement stmt = stmtRule();
+						if(stmt!=null){
+							return new Statement3(first_token,left_bracket,right_bracket,expression,stmt);
+						}
+						
+					}
+					}
+				}
+		}
+		else if(first_token!=null && first_token.getType().equals("SYSTEM.OUT.PRINTLN")){
+			queue.poll();
+			Token left_bracket = queue.peek();
+			if(left_bracket!=null && left_bracket.getType().equals("LEFT_ROUND_B")){
+				queue.poll();
+				Expression expression = expressionRule();
+				if(expression!=null){
+					Token right_bracket = queue.peek();
+					if(right_bracket!=null && right_bracket.getType().equals("RIGHT_ROUND_B")){
+						Token semicolon = queue.peek();
+						if(semicolon!=null && semicolon.getType().equals("SEMICOLON")){
+							queue.poll();
+							return new Statement4(first_token,left_bracket,right_bracket,expression,semicolon);
+						}
+					}	
+				}
+			}
+		}
+		else{
+			Identifier identifier = identifierRule();
+			if(identifier!=null){
+				SquareBracketsStatement squareStmt = squareBracketsStmtRule();
+				if(squareStmt!=null){
+					Token equal = queue.peek();
+					if(equal !=null&&equal.getType().equals("EQUAL")){
+						queue.poll();
+						Expression expression = expressionRule();
+						if(expression!=null){
+							Token semicolon = queue.peek();
+							if(semicolon!=null && semicolon.getType().equals("SEMICOLON")){
+								queue.poll();
+								return new Statement5(identifier,squareStmt,equal,expression,semicolon);
+							}
+						}
+					}
+				}
+			}
+		}
 		return null;
+	}
+	
+	private ElseStatement elseStmtRule(){
+		Token elseToken = queue.peek();
+		if(elseToken!=null && elseToken.getType().equals("ELSE")){
+			queue.poll();
+			Statement stmt = stmtRule();
+			if(stmt!=null){
+				return new ElseStatement1(elseToken, stmt);
+			}
+		}
+		return new ElseStatement2(new Epsilon());
+	}
+	
+	private SquareBracketsStatement squareBracketsStmtRule(){
+		Token left_square_bracket = queue.peek();
+		if(left_square_bracket!=null && left_square_bracket.getType().equals("LEFT_SQUARE_B")){
+			queue.poll();
+			Expression expression = expressionRule();
+			if(expression!=null){
+				Token right_square_bracket = queue.peek();
+				if(right_square_bracket!=null && right_square_bracket.getType().equals("RIGHT_SQUARE_B")){
+					queue.poll();
+					return new SquareBracketsStatement1(left_square_bracket,expression,right_square_bracket);
+				}
+			}
+		}
+		return new SquareBracketsStatement2(new Epsilon());
 	}
 
 	private Expression expressionRule() {
@@ -541,15 +607,240 @@ public class Parser {
 		return null;
 	}
 	
+	
+	private ClassDeclarations classDeclarationsRule(){
+		ClassDeclaration classDeclaration = classDeclarationRule();
+		if(classDeclaration!=null){
+			ClassDeclarations classDeclarations = classDeclarationsRule();
+			if(classDeclarations!=null){
+				return new ClassDeclarations1(classDeclaration,classDeclarations);
+			}
+		}
+		return new ClassDeclarations2(new Epsilon());
+	}
+	
+	private Goal goalRule(){
+		MainClass mainClass = mainClassRule();
+		if(mainClass != null){
+			ClassDeclarations classDeclarations = classDeclarationsRule();
+			if(classDeclarations!=null){
+				Token eol = queue.peek();
+				if(eol!= null && eol.getType().equals("EOL")){
+					queue.poll();
+					return new Goal(mainClass,classDeclarations,eol);
+				}
+			}
+		}
+		return null;
+	}
+	
+
+
+	/*
+	 * 
+	 * Parameters ::= Parameter CommaParameters | Lambda
+	 */
+	private Parameters parametersRule() {
+		// TODO Auto-generated method stub
+		Parameter p = ParameterRule();
+		if (p == null) {
+			Parameters pS = new Parameters2();
+			return pS;
+		}
+		CommaParameters c = CommaParametersRule();
+		Parameters pS = new Parameters1(p, c);
+		return pS;
+
+	}
+
+	// Parameter ::= Type Identifier
+	private Parameter ParameterRule() {
+		// TODO Auto-generated method stub
+
+		Type t = typeRule();
+		Identifier id = identifierRule();
+		return new Parameter(t, id);
+	}
+
+
+	// CommaParameters ::= "," Parameter CommaParameters | Lambda
+
+	private CommaParameters CommaParametersRule() {
+		// TODO Auto-generated method stub
+		Token t = queue.peek();
+
+		if (t.getType().equals("COMMA")) {
+			queue.poll();
+			Parameter p = ParameterRule();
+			CommaParameters cP = CommaParametersRule();
+			CommaParameters c = new CommaParameters1(t, p, cP);
+			return c;
+		}
+		CommaParameters c = new CommaParameters2();
+		return c;
+
+	}
+	private Type typeRule() {
+		Token type = queue.peek();
+		if (type.getType().equals("INT")) {
+			queue.poll();
+			Token left = queue.peek();
+			if (left.getType().equals("LEFT_SQUARE_B")) {
+				queue.poll();
+				Token right = queue.peek();
+				if (right.getType().equals("RIGHT_SQUARE_B")) {
+					queue.poll();
+					ArrayType arrType = new ArrayType(left, right);
+					IntType intType =  new IntType(arrType, type);
+					return intType;
+
+				} else {
+					System.out.println("Syntax Error");
+					return null;
+				}
+
+			}
+			ArrayType arrType = new ArrayType();
+			IntType inttype = new IntType(arrType, type);
+			return inttype;
+			
+		} else if (type.getType().equals("STRING")) {
+			queue.poll();
+			Token left = queue.peek();
+			if (left.getType().equals("LEFT_SQUARE_B")) {
+				queue.poll();
+				Token right = queue.peek();
+				if (right.getType().equals("RIGHT_SQUARE_B")) {
+					queue.poll();
+					ArrayType arrType = new ArrayType(left, right);
+					StringType strType = new StringType(arrType,type);
+					return strType;
+
+				} else {
+					System.out.println("Syntax Error");
+					return null;
+				}
+
+			}
+			ArrayType arrType = new ArrayType();
+			StringType strType = new StringType(arrType,type);
+			return strType;
+
+		} else if (type.getType().equals("CHAR")) {
+			queue.poll();
+			Token left = queue.peek();
+			if (left.getType().equals("LEFT_SQUARE_B")) {
+				queue.poll();
+				Token right = queue.peek();
+				if (right.getType().equals("RIGHT_SQUARE_B")) {
+					queue.poll();
+					ArrayType arrType = new ArrayType(left, right);
+					CharType charType = new CharType(arrType, type);
+					return charType;
+
+				} else {
+					System.out.println("Syntax Error");
+					return null;
+				}
+
+			}
+			ArrayType arrType = new ArrayType();
+			CharType charType = new CharType(arrType,type);
+			return charType;
+			
+		} else if (type.getType().equals("FLOAT")) {
+			queue.poll();
+			Token left = queue.peek();
+			if (left.getType().equals("LEFT_SQUARE_B")) {
+				queue.poll();
+				Token right = queue.peek();
+				if (right.getType().equals("RIGHT_SQUARE_B")) {
+					queue.poll();
+					ArrayType arrType = new ArrayType(left, right);
+					FloatType floatType =new FloatType(arrType, type);
+					return floatType;
+
+				} else {
+					System.out.println("Syntax Error");
+					return null;
+				}
+
+			}
+			ArrayType arrType = new ArrayType();
+			FloatType floatType = new FloatType(arrType,type);
+			return floatType;
+		} else if (type.getType().equals("BOOLEAN")) {
+			queue.poll();
+			Token left = queue.peek();
+			if (left.getType().equals("LEFT_SQUARE_B")) {
+				queue.poll();
+				Token right = queue.peek();
+				if (right.getType().equals("RIGHT_SQUARE_B")) {
+					queue.poll();
+					ArrayType arrType = new ArrayType(left, right);
+					BooleanType boolType =new BooleanType(arrType, type);
+					return boolType;
+
+				} else {
+					System.out.println("Syntax Error");
+					return null;
+				}
+
+			}
+			ArrayType arrType = new ArrayType();
+			BooleanType boolType = new BooleanType(arrType,type);
+			return boolType;
+		}
+
+		return null;
+	}
+
+	private AccessSpecifier accessSpecifierRule() {
+		// TODO Auto-generated method stub
+		Token t = queue.peek();
+		if (t.equals("PRIVATE")) {
+			queue.poll();
+			AccessSpecifier a = new AccessSpecifier1(t);
+			return a;
+		} else if (t.equals("PUBLIC")) {
+			queue.poll();
+			AccessSpecifier a = new AccessSpecifier2(t);
+			return a;
+
+		}
+		return null;
+	}
+
+
 	private Identifier identifierRule() {
 		// TODO Auto-generated method stub
-		return null;
+		Token id = queue.peek();
+		if (!id.getType().equals("ID"))
+			System.out.println("Syntax Error");
+		else
+			queue.poll();
+		return new Identifier(id);
+	}
+	
+	//VarDeclaration ::= Type Identifier ";"
+	private VarDeclaration varDeclarationRule(){
+		Type t = typeRule();
+		Identifier id = identifierRule();
+		Token semicolon = queue.peek();
+		if(!semicolon.getType().equals("SEMICOLON")){
+			System.out.println("Syntax Error");
+			return null;
+		}
+		queue.poll();
+		return new VarDeclaration(t, id, semicolon);
+		
 	}
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		Parser p = new Parser("TC4.txt");
-
+		Parser p = new Parser("TC1.txt");
+	Parameters p1 = p.parametersRule();
+	p1.printNode();
 	}
 
 }

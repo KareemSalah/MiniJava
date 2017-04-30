@@ -16,7 +16,7 @@ public class CommaParameters1 implements CommaParameters,Node{
 		// TODO Auto-generated method stub
 		System.out.println("-------Comma Parameters -------------");
 		System.out.println("Comma Parameters : Comma = "+ Comma.getValue());
-		System.out.println("Comma Parameters : Parameter = ");
+		//System.out.println("Comma Parameters : Parameter = ");
 		if(P!=null) P.printNode() ; else System.out.println("null");
 		System.out.println("Comma Parameters : CommaParameter = ");
 		if(CP1!=null) CP1.printNode() ; else System.out.println("null");

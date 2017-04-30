@@ -17,8 +17,8 @@ public class VarDeclaration implements Node{
 	@Override
 	public void printNode() {
 		System.out.println("----------------- VarDeclaration ----------------");
-		this.type.printNode();
-		this.identifier.printNode();
+		if(this.type!=null)this.type.printNode();else System.out.println("null");
+		if(this.identifier!=null)this.identifier.printNode();else System.out.println("null");
 		this.semiColon.getValue();
 	}
 	

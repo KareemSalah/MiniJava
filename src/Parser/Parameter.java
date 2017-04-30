@@ -13,6 +13,7 @@ public void printNode() {
 	// TODO Auto-generated method stub
 	System.out.println("-------Parameter-------------");
 	System.out.println("Parameter : Type = ");
+	
 	if(type!=null) type.printNode() ; else System.out.println("null");
 
 	System.out.println("Parameter : ID = ");
