@@ -21,8 +21,8 @@ import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 //mport Lexical.Token;
 
 
-    public class Lexiacalanalysis{
-    	public Lexiacalanalysis() {
+    public class LexicalAnalysis{
+    	public LexicalAnalysis() {
 			super();
 	
 		}
@@ -203,7 +203,7 @@ import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
     
 	@SuppressWarnings("finally")
 	public static void main(String[] args) throws IOException {
-		Lexiacalanalysis la = new Lexiacalanalysis();
+		LexicalAnalysis la = new LexicalAnalysis();
 		ArrayList<Token> tokens = la.getAllTokens("TC4.txt");
 		Queue <Token> Alltoken = new LinkedList<Token>();
 		for(int i=0;i<tokens.size();i++)

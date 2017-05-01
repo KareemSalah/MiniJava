@@ -34,7 +34,7 @@ public class Parser {
 	}
 
 	public ArrayList<Token> getTokens(String fileName) throws IOException {
-		Lexiacalanalysis la = new Lexiacalanalysis();
+		LexicalAnalysis la = new LexicalAnalysis();
 		return la.getAllTokens(fileName);
 
 	}
@@ -44,96 +44,30 @@ public class Parser {
 	// "{" Statement "}" "}"
 
 	private MainClass mainClassRule() {
-		Token t, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13;
-		t = queue.peek();
-		if (!t.getType().equals("CLASS")) {
-			// System.out.println("Syntax Error ");
-			return null;
-		} else
+		Token[] t = new Token[14];
+		String[] sequence = new String[]{
+				"CLASS",
+				"LEFT_CURLY_B",
+				"PUBLIC",
+				"STATIC",
+				"VOID",
+				"MAIN",
+				"LEFT_ROUND_B",
+				"STRING",
+				"LEFT_SQUARE_B",
+				"RIGHT_SQUARE_B",
+				"LEFT_CURLY_B",
+				"RIGHT_CURLY_B",
+				"RIGHT_CURLY_B"
+		};
+		for(int i = 0;i < 14;i++) {
+			t[i] = queue.peek();
+			if(!t[i].getType().equals(sequence[i])) {
+				return null;
+			}
 			queue.poll();
-		Identifier id1 = identifierRule();
-		t1 = queue.peek();
-		if (!t1.getType().equals("LEFT_CURLY_B")) {
-			// System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		t2 = queue.peek();
-		if (!t2.getType().equals("PUBLIC")) {
-			// System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		t3 = queue.peek();
-		if (!t3.getType().equals("STATIC")) {
-			// System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		t4 = queue.peek();
-		if (!t4.getType().equals("VOID")) {
-			// System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		t5 = queue.peek();
-		if (!t5.getType().equals("MAIN")) {
-			// System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		t6 = queue.peek();
-		if (!t6.getType().equals("LEFT_ROUND_B")) {
-			// System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		t7 = queue.peek();
-		if (!t7.getType().equals("STRING")) {
-			// System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		t8 = queue.peek();
-		if (!t8.getType().equals("LEFT_SQUARE_B")) {
-			// System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		t9 = queue.peek();
-		if (!t9.getType().equals("RIGHT_SQUARE_B")) {
-			// System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		Identifier id2 = identifierRule();
-		t10 = queue.peek();
-		if (!t10.getType().equals("RIGHT_ROUND_B")) {
-		//	System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		t11 = queue.peek();
-		if (!t11.getType().equals("LEFT_CURLY_B")) {
-		//	System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		Statement stmt = stmtRule();
-		t12 = queue.peek();
-		// System.out.println("t12"+t12.getType());
-		if (!t12.getType().equals("RIGHT_CURLY_B")) {
-		//	System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		t13 = queue.peek();
-		if (!t13.getType().equals("RIGHT_CURLY_B")) {
-		//	System.out.println("Syntax Error ");
-			return null;
-		} else
-			queue.poll();
-		return new MainClass(t, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, id1, id2, stmt);
+		}
+		return new MainClass(t, id1, id2, stmt);
 
 	}
 	// MethodDeclaration ::= AccessSpecifier Type Identifier "(" Parameters ")"
