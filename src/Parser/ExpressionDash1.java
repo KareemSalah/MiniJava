@@ -1,6 +1,6 @@
 package Parser;
 
-public class ExpressionDash1 implements ExpressionDash {
+public class ExpressionDash1 extends ExpressionDash {
 	private OP op;
 	private Expression expression;
 	

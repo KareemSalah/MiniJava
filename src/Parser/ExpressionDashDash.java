@@ -1,6 +1,17 @@
 package Parser;
 
-public interface ExpressionDashDash extends Expression {	
+public class ExpressionDashDash extends Expression {
+	
+	public ExpressionDashDash(){
+		super();
+	};
+	
+	public ExpressionDashDash(ExpressionDashDash expressionDashDash, ExpressionBeta expressionBeta) {
+		super(expressionDashDash, expressionBeta);
+	}
+
 	@Override
-	default void printNode(){};
+	public void printNode() {};
+	
+	
 }

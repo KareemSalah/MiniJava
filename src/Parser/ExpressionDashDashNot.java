@@ -2,7 +2,7 @@ package Parser;
 
 import MiniJava.Token;
 
-public class ExpressionDashDashNot implements ExpressionDashDash {
+public class ExpressionDashDashNot extends ExpressionDashDash {
 	private Token not;
 	private Expression expression;
 	

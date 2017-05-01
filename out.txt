@@ -1,60 +1,106 @@
 Successs
+<CLASS, class>
+<ID, Factorial>
+<LEFT_CURLY_B, {>
+<EOL, 
+>
 <PUBLIC, public>
+<STATIC, static>
+<VOID, void>
 <MAIN, main>
 <LEFT_ROUND_B, (>
+<STRING, String>
+<LEFT_SQUARE_B, [>
+<RIGHT_SQUARE_B, ]>
+<ID, a>
 <RIGHT_ROUND_B, )>
 <LEFT_CURLY_B, {>
 <EOL, 
 >
-<ID, intvalue>
-<EQUAL, =>
+<SYSTEM.OUT.PRINTLN, System.out.println>
+<LEFT_ROUND_B, (>
+<NEW, new>
+<ID, Fac>
+<LEFT_ROUND_B, (>
+<RIGHT_ROUND_B, )>
+<DOT, .>
+<ID, ComputeFac>
+<LEFT_ROUND_B, (>
 <INTEGRAL_LITERAL, 10>
+<RIGHT_ROUND_B, )>
+<RIGHT_ROUND_B, )>
 <SEMICOLON, ;>
-<EOL, 
->
-<Error, />
-<Error, />
 <EOL, 
 >
 <RIGHT_CURLY_B, }>
-<Error, \>
+<EOL, 
+>
+<RIGHT_CURLY_B, }>
+<EOL, 
+>
+<CLASS, class>
+<ID, Fac>
+<LEFT_CURLY_B, {>
+<EOL, 
+>
+<PUBLIC, public>
+<INT, int>
+<ID, ComputeFac>
+<LEFT_ROUND_B, (>
+<INT, int>
+<ID, num>
+<RIGHT_ROUND_B, )>
+<LEFT_CURLY_B, {>
 <EOL, 
 >
 <INT, int>
-<ID, value>
-<EQUAL, =>
-<INTEGRAL_LITERAL, 10>
-<Error, />
-<INTEGRAL_LITERAL, 5>
+<ID, num_aux>
 <SEMICOLON, ;>
 <EOL, 
 >
-<STRING, String>
-<STRING, String>
+<IF, if>
+<LEFT_ROUND_B, (>
+<ID, num>
+<LESSTHAN, <>
+<INTEGRAL_LITERAL, 1>
+<RIGHT_ROUND_B, )>
+<EOL, 
+>
+<ID, num_aux>
 <EQUAL, =>
-<STRING_LITERAL, "Hi">
+<INTEGRAL_LITERAL, 1>
 <SEMICOLON, ;>
 <EOL, 
 >
-<BOOLEAN, boolean>
-<ID, b>
+<ELSE, else>
+<EOL, 
+>
+<ID, num_aux>
 <EQUAL, =>
-<TRUE, true>
+<ID, num>
+<MULTIPLY, *>
+<LEFT_ROUND_B, (>
+<THIS, this>
+<DOT, .>
+<ID, ComputeFac>
+<LEFT_ROUND_B, (>
+<ID, num>
+<MINUS, ->
+<INTEGRAL_LITERAL, 1>
+<RIGHT_ROUND_B, )>
+<RIGHT_ROUND_B, )>
 <SEMICOLON, ;>
 <EOL, 
 >
-<STRING, String>
-<ID, s>
-<EQUAL, =>
-<STRING_LITERAL, "fdhfd">
-<ID, dfhd>
-<DQUOTE, ">
+<RETURN, return>
+<ID, num_aux>
 <SEMICOLON, ;>
 <EOL, 
 >
-<STRING, String>
-<MAIN, main>
-<SEMICOLON, ;>
+<RIGHT_CURLY_B, }>
+<EOL, 
+>
+<RIGHT_CURLY_B, }>
 <EOL, 
 >
 <EOL, >

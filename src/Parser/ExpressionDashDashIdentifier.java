@@ -1,6 +1,6 @@
 package Parser;
 
-public class ExpressionDashDashIdentifier implements ExpressionDashDash {
+public class ExpressionDashDashIdentifier extends ExpressionDashDash {
 	private Identifier identifier;
 
 	public ExpressionDashDashIdentifier(Identifier identifier) {
@@ -8,7 +8,6 @@ public class ExpressionDashDashIdentifier implements ExpressionDashDash {
 		this.identifier = identifier;
 	}
 
-	@Override
 	public void printNode() {
 		System.out.println("----------ExpressionDashDash----------");
 		System.out.println("ExpressionDashDash : identifier = "); identifier.printNode();

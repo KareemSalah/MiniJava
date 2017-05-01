@@ -2,7 +2,7 @@ package Parser;
 
 import MiniJava.Token;
 
-public class ExpressionDashDashIntegerLiteral implements ExpressionDashDash{
+public class ExpressionDashDashIntegerLiteral extends ExpressionDashDash{
 	private Token intLiteral;
 
 	public ExpressionDashDashIntegerLiteral(Token intLiteral) {

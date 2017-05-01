@@ -2,7 +2,7 @@ package Parser;
 
 import MiniJava.Token;
 
-public class ExpressionDashDashFalse implements ExpressionDashDash {
+public class ExpressionDashDashFalse extends ExpressionDashDash {
 	private Token falseKeyword;
 
 	public ExpressionDashDashFalse(Token falseKeyword) {
@@ -10,7 +10,6 @@ public class ExpressionDashDashFalse implements ExpressionDashDash {
 		this.falseKeyword = falseKeyword;
 	}
 
-	@Override
 	public void printNode() {
 		System.out.println("----------ExpressionDashDash----------");
 		System.out.println("ExpressionDashDash : False = " + falseKeyword.getValue());

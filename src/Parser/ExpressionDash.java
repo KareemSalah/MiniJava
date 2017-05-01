@@ -1,9 +1,9 @@
 package Parser;
 
-public interface ExpressionDash extends Expression {
+public class ExpressionDash extends Expression {
 
 	@Override
-	default void printNode() {
+	public void printNode() {
 	}
 	
 }

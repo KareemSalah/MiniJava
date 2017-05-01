@@ -2,7 +2,7 @@ package Parser;
 
 import MiniJava.Token;
 
-public class ExpressionDash2 implements ExpressionDash {
+public class ExpressionDash2 extends ExpressionDash {
 	private Token openSquareBrackets;
 	private Expression expression;
 	private Token closedSquareBrackets;
