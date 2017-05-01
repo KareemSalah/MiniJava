@@ -60,12 +60,24 @@ public class Parser {
 				"RIGHT_CURLY_B",
 				"RIGHT_CURLY_B"
 		};
+		Identifier id1 = null, id2 = null;
+		Statement stmt = null;
+		
 		for(int i = 0;i < 14;i++) {
 			t[i] = queue.peek();
 			if(!t[i].getType().equals(sequence[i])) {
 				return null;
 			}
 			queue.poll();
+			if(i == 0) {
+				id1 = identifierRule();
+			}
+			if(i == 9) {
+				id2 = identifierRule();
+			}
+			if(i == 11) {
+				stmt = stmtRule();
+			}
 		}
 		return new MainClass(t, id1, id2, stmt);
 
